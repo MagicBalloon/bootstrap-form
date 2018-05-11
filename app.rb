@@ -1,5 +1,6 @@
 require 'rubygems'
 require 'sinatra'
+require 'sinatra/reloader'
 
 configure do
   enable :sessions
@@ -19,9 +20,45 @@ before '/secure/*' do
   end
 end
 
+def validate(fields)
+  @error, @success = '', ''
+  
+  fields.each do |k, v|
+    if v.nil? || v.empty?
+      @error += "Field <b>#{k}</b> can't be empty<br>"
+    else 
+      @success += "Field <b>#{k}</b>: #{v}<br>"
+    end
+  end
+
+  @error = nil if @error.empty?
+  @success = nil if @success.empty?
+  
+end
+
 get '/' do
   erb 'Can you handle a <a href="/secure/place">secret</a>?'
 end
+
+get '/post_form' do
+  erb :post_form
+end
+
+post '/post_form' do
+  @post_data = {
+    name: params[:name],
+    email: params[:email],
+    select: params[:select],
+    message: params[:message],
+    checkbox1: params[:checkbox1],
+    checkbox2: params[:checkbox2]
+  }
+
+  validate(@post_data)
+
+  erb :post_form
+end
+
 
 get '/login/form' do
   erb :login_form

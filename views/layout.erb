@@ -7,7 +7,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
 
     <!-- Bootstrap CSS -->
-    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta.2/css/bootstrap.min.css" integrity="sha384-PsH8R72JQ3SOdhVi3uxftmaW6Vc51MKb0q5P2rRUpPvrszuE4W1povHYgTpBfshb" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.0/css/bootstrap.min.css" crossorigin="anonymous">
   </head>
   <body>
 		<div class="container">
@@ -22,6 +22,9 @@
 					<ul class="navbar-nav mr-auto">
 						<li class="nav-item active">
 							<a class="nav-link" href="/">Home <span class="sr-only">(current)</span></a>
+						</li>
+						<li class="nav-item">
+							<a class="nav-link" href="/post_form">Post Form</a>
 						</li>
 						<li class="nav-item dropdown">
 							<a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
@@ -39,7 +42,10 @@
 
 			<div>
 				<%if @error then %>
-						<div class="alert alert-error"><%=@error%></div>
+						<div class="alert alert-danger" role="alert"><%=@error%></div>
+				<% end %>
+				<%if @success then %>
+						<div class="alert alert-success" role="alert"><%=@success%></div>
 				<% end %>
 				<%= yield %>
 			</div>
