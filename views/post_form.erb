@@ -1,38 +1,38 @@
 <form action="/post_form" method="POST">
   <div class="form-group">
     <label>Name</label>
-    <input name="name" type="text" class="form-control" placeholder="Enter name">
+    <input value="<%= @post_data[:name] %>" name="name" type="text" class="form-control" placeholder="Enter name">
   </div>
   
   <div class="form-group">
     <label>Email address</label>
-    <input name="email" type="email" class="form-control" aria-describedby="emailHelp" placeholder="Enter email">
+    <input value="<%= @post_data[:email] %>" name="email" type="email" class="form-control" aria-describedby="emailHelp" placeholder="Enter email">
   </div>
 
   <div class="form-group">
     <label>Select something</label>
     <select name="select" class="form-control">
-      <option value="Option 1">Option 1</option>
-      <option value="Option 2">Option 2</option>
-      <option value="Option 3">Option 3</option>
-      <option value="Option 4">Option 4</option>
-      <option value="Option 5">Option 5</option>
+      <option value="Option 1" <%= 'selected' if @post_data[:select] == "Option 1" %>>Option 1</option>
+      <option value="Option 2" <%= 'selected' if @post_data[:select] == "Option 2" %>>Option 2</option>
+      <option value="Option 3" <%= 'selected' if @post_data[:select] == "Option 3" %>>Option 3</option>
+      <option value="Option 4" <%= 'selected' if @post_data[:select] == "Option 4" %>>Option 4</option>
+      <option value="Option 5" <%= 'selected' if @post_data[:select] == "Option 5" %>>Option 5</option>
     </select>
   </div>
 
   <div class="form-group">
     <label>Message</label>
-    <textarea name="message" class="form-control" rows="2"></textarea>
+    <textarea name="message" class="form-control" rows="2"><%= @post_data[:message] %></textarea>
   </div>
   
   <div class="form-group">
     <div class="form-check">
-      <input class="form-check-input" type="checkbox" name="checkbox1" value="checkbox1" value="" id="defaultCheck1">
+      <input class="form-check-input" type="checkbox" name="checkbox1" value="checkbox1" id="defaultCheck1" <%= 'checked' if @post_data[:checkbox1] %>>
       <label class="form-check-label" for="defaultCheck1">Default checkbox 1</label>
     </div>
     
     <div class="form-check">
-      <input class="form-check-input" type="checkbox" name="checkbox2" value="checkbox2" value="" id="defaultCheck2">
+      <input class="form-check-input" type="checkbox" name="checkbox2" value="checkbox2" id="defaultCheck2" <%= 'checked' if @post_data[:checkbox2] %>>
       <label class="form-check-label" for="defaultCheck2">Default checkbox 2</label>
     </div>
   </div>
