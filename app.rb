@@ -41,6 +41,7 @@ get '/' do
 end
 
 get '/post_form' do
+  @post_data = {}
   erb :post_form
 end
 
